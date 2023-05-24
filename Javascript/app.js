@@ -1,6 +1,6 @@
 const tasks = document.getElementById('goals');
 const addBtn = document.getElementById('add-btn');
-const clearBtn = document.getElementById('clear-btn');
+// const clearBtn = document.getElementById('clear-btn');
 const taskContainer = document.querySelector('.tasks-container');
 
 addBtn.addEventListener('click', () => {
@@ -19,22 +19,22 @@ addBtn.addEventListener('click', () => {
 </div>`;
   tasks.value = '';
   document.querySelector('.small-text').classList.remove('show-small-text');
-  const tasksWrapper = document.querySelector('.tasks-wrapper');
+  //   const tasksWrapper = document.querySelector('.tasks-wrapper');
   const correctBtn = document.querySelectorAll('.correct-btn');
   const deleteBtn = document.querySelectorAll('.delete-btn');
   correctBtn.forEach((btn) => {
-      btn.addEventListener('click', (e)=>{
-        let parent = e.target.parentNode;
-        let doubleParent = parent.parentNode;
-        let tripleParent = doubleParent.parentNode;
-         parent.classList.toggle('done');
-         tripleParent.firstElementChild.classList.toggle('complete-task');
-      });
+    btn.addEventListener('click', (e) => {
+      const parent = e.target.parentNode;
+      const doubleParent = parent.parentNode;
+      const tripleParent = doubleParent.parentNode;
+      parent.classList.toggle('done');
+      tripleParent.firstElementChild.classList.toggle('complete-task');
+    });
   });
 
   deleteBtn.forEach((btn) => {
-    btn.addEventListener('click', (e)=>{
-        console.log(this.parentNode)
-    })
-  })
+    btn.addEventListener('click', () => {
+    //   console.log(this.parentNode);
+    });
+  });
 });
