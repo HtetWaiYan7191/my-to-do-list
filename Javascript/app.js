@@ -1,7 +1,21 @@
 const tasks = document.getElementById('goals');
 const addBtn = document.getElementById('add-btn');
-// const clearBtn = document.getElementById('clear-btn');
+const clearBtn = document.getElementById('clear-btn');
 const taskContainer = document.querySelector('.tasks-container');
+const taskArr = [];
+
+// Store data In Local Storage
+
+function storeLocalStorage(tasksValue) {
+  taskArr.push(tasksValue);
+  const storeData = {
+    tasks: taskArr,
+  };
+  localStorage.setItem('DailyTask', JSON.stringify(storeData));
+// storeData.tasks.forEach((task) => {
+//   console.log(task)
+// })
+}
 
 addBtn.addEventListener('click', () => {
   if (tasks.value === '') {
@@ -17,7 +31,7 @@ addBtn.addEventListener('click', () => {
         <button class="delete-btn"><i class="fa-solid fa-trash"></i></button>
     </div>
 </div>`;
-  tasks.value = '';
+
   document.querySelector('.small-text').classList.remove('show-small-text');
   //   const tasksWrapper = document.querySelector('.tasks-wrapper');
   const correctBtn = document.querySelectorAll('.correct-btn');
@@ -32,9 +46,21 @@ addBtn.addEventListener('click', () => {
     });
   });
 
+  function removeTask() {
+    const parent = this.parentNode;
+    parent.parentNode.remove();
+  }
+
   deleteBtn.forEach((btn) => {
-    btn.addEventListener('click', () => {
-    //   console.log(this.parentNode);
-    });
+    btn.addEventListener('click', removeTask);
   });
+
+  storeLocalStorage(tasks.value);
+  tasks.value = '';
+});
+
+clearBtn.addEventListener('click', () => {
+  taskContainer.innerHTML = '';
+  localStorage.clear();
+  taskArr.length = 0;
 });
