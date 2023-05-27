@@ -7,6 +7,7 @@ const viewBtn = document.querySelector('.view-goals');
 const modalContainer = document.getElementById('modal-container');
 const modalCrossBtn = document.querySelector('.modal-cross-btn');
 const overlay = document.getElementById('overlay');
+const dailyTaskContainer = document.getElementById('daily-task');
 
 // Store data In Local Storage
 
@@ -15,11 +16,12 @@ function storeLocalStorage(tasksValue) {
   const storeData = {
     tasks: taskArr,
   };
-  localStorage.setItem('DailyTask', JSON.stringify(storeData));
+  localStorage.setItem('dailyTask', JSON.stringify(storeData));
 // storeData.tasks.forEach((task) => {
 //   console.log(task)
 // })
 }
+let getData = JSON.parse(localStorage.getItem('dailyTask'));
 
 addBtn.addEventListener('click', () => {
   if (tasks.value === '') {
@@ -63,19 +65,45 @@ addBtn.addEventListener('click', () => {
   tasks.value = '';
 });
 
+
+
 clearBtn.addEventListener('click', () => {
   taskContainer.innerHTML = '';
   localStorage.clear();
+  getData = JSON.parse(localStorage.getItem('dailyTask'));
   taskArr.length = 0;
 });
+
 
 viewBtn.addEventListener('click', () => {
   modalContainer.classList.toggle('showDisplay');
   overlay.classList.toggle('active');
-
+  getData = JSON.parse(localStorage.getItem('dailyTask'));
+  showModal();
 });
+
+function showModal() {
+
+  if(getData) {
+    getData.tasks.forEach((task) => {
+      const node = document.createElement('li');
+      node.textContent = `${task}`;
+      const li = `
+                     <li>${task}</li>
+                `;
+  
+      dailyTaskContainer.appendChild(node)
+    })
+  }
+  else {
+
+   dailyTaskContainer.innerHTML = `<li>There is no tasks for today yet</li>`;
+    return ;
+  }
+}
 
 modalCrossBtn.addEventListener('click', () => {  
  modalContainer.classList.toggle('showDisplay');
  overlay.classList.toggle('active');
+ dailyTaskContainer.innerHTML = ``;
 });
