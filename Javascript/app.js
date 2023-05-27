@@ -3,6 +3,10 @@ const addBtn = document.getElementById('add-btn');
 const clearBtn = document.getElementById('clear-btn');
 const taskContainer = document.querySelector('.tasks-container');
 const taskArr = [];
+const viewBtn = document.querySelector('.view-goals');
+const modalContainer = document.getElementById('modal-container');
+const modalCrossBtn = document.querySelector('.modal-cross-btn');
+const overlay = document.getElementById('overlay');
 
 // Store data In Local Storage
 
@@ -63,4 +67,15 @@ clearBtn.addEventListener('click', () => {
   taskContainer.innerHTML = '';
   localStorage.clear();
   taskArr.length = 0;
+});
+
+viewBtn.addEventListener('click', () => {
+  modalContainer.classList.toggle('showDisplay');
+  overlay.classList.toggle('active');
+
+});
+
+modalCrossBtn.addEventListener('click', () => {  
+ modalContainer.classList.toggle('showDisplay');
+ overlay.classList.toggle('active');
 });
