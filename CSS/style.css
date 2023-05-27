@@ -1,5 +1,4 @@
 @import url("https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400;1,700;1,900&family=Open+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,500;1,700&family=Poppins:ital,wght@0,500;0,600;0,700;1,200;1,400;1,500;1,700&family=Roboto+Mono:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600;1,700&family=Roboto:ital,wght@0,100;0,300;0,400;1,100;1,300;1,400&family=Space+Mono&display=swap");
-
 * {
   box-sizing: border-box;
   margin: 0;
@@ -17,14 +16,12 @@
   width: 96%;
   margin: auto;
 }
-
 .header-container img {
   width: 5rem;
   height: 5rem;
   aspect-ratio: 1/1;
   object-fit: contain;
 }
-
 .header-container h2 {
   color: #e7b3a6;
   font-size: 20px;
@@ -36,29 +33,24 @@ main form label {
   color: #e55e3c;
   font-weight: 500;
 }
-
 main form span {
   font-size: 1.3rem;
   font-weight: 500;
   color: #a4d0a4;
 }
-
 main form .small-text {
   transform: scale(0);
   transition: all 0.4s ease;
   display: none;
 }
-
 main form .show-small-text {
   transform: scale(1);
   transition: all 0.4s ease;
   display: block;
 }
-
 main form .complete-image {
   width: 30%;
 }
-
 main form input {
   border-radius: 16px;
   border-color: #e7b3a6;
@@ -66,23 +58,23 @@ main form input {
   width: 80%;
   overflow-x: scroll;
 }
-
 main form input:focus {
   outline-style: double;
-  outline-color: #4964f0;
-  border: none;
+  outline-color: #a4d0a4;
+  border: 1px solid #a4d0a4;
 }
-
-main form .sample-button,
-main form #clear-btn {
+main form .sample-button, main form #clear-btn {
   width: 30%;
   border-radius: 10px;
   padding: 5px 12px;
   margin-top: 1rem;
   background-color: #e7b3a6;
   color: #342e31;
+  border: none;
 }
-
+main form .sample-button:active, main form #clear-btn:active {
+  border: 1px solid #342e31;
+}
 main form #clear-btn {
   width: 50%;
 }
@@ -95,32 +87,27 @@ main form #clear-btn {
   margin: auto;
   height: auto;
 }
-
 .tasks-container .tasks-wrapper {
   background-color: #342e31;
   color: #f3f7f8;
   padding: 16px 12px;
   border-radius: 14px;
 }
-
 .tasks-container .correct-btn,
 .tasks-container .delete-btn {
   border-radius: 15px;
   background-color: #e55e3c;
-  color: #f3f7f8;
+  color: #342e31;
   outline: none;
   border: none;
 }
-
 .tasks-container i {
   padding: 10px 12px;
 }
-
 .tasks-container .done {
   background-color: #a4d0a4;
   color: #f3f7f8;
 }
-
 .tasks-container .complete-task {
   width: 50%;
   border: 1px solid #a4d0a4;
@@ -134,7 +121,6 @@ main form #clear-btn {
   width: 100%;
   text-align: center;
 }
-
 .button-container .view-goals {
   width: 30%;
   border-radius: 10px;
@@ -145,3 +131,62 @@ main form #clear-btn {
   color: #342e31;
   border: none;
 }
+.button-container .view-goals:active {
+  border: 1px solid #342e31;
+}
+
+.modal-container {
+  max-width: 500px;
+  width: 350px;
+  height: 500px;
+  background-color: #f3f7f8;
+  color: #e55e3c;
+  position: fixed;
+  top: 50%;
+  left: -100%;
+  transform: translate(-50%, -50%);
+  border-radius: 16px;
+  z-index: 10;
+}
+.modal-container .modal-header {
+  width: 90%;
+  margin: auto;
+}
+.modal-container ol li {
+  list-style-type: square;
+}
+.modal-container .modal-cross-btn {
+  background-color: inherit;
+  padding: 2px 7px;
+  border: 1px solid #e55e3c;
+  border-radius: 12px;
+  outline-color: #4964f0;
+  color: #e55e3c;
+}
+.modal-container .modal-cross-btn:active {
+  border: 1px solid #e7b3a6;
+  border-radius: 12px;
+  transition: all 0.5s ease;
+}
+.modal-container .modal-cross-btn:active i {
+  color: #e7b3a6;
+}
+
+.showDisplay {
+  transform: translate(-50%, -50%);
+  left: 50%;
+  display: block;
+  transition: all 0.4s ease;
+}
+
+#overlay.active {
+  background-color: rgba(0, 0, 0, 0.5);
+  width: 100%;
+  height: 100vh;
+  z-index: 1;
+  position: fixed;
+  top: 0;
+  left: 0;
+}
+
+/*# sourceMappingURL=style.css.map */

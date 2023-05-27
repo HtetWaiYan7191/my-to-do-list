@@ -72,8 +72,8 @@ main {
 
     input:focus {
       outline-style: double;
-      outline-color: $blueColor;
-      border: none;
+      outline-color: $greenColor;
+      border: 1px solid $greenColor;
     }
 
     .sample-button {
@@ -83,6 +83,11 @@ main {
       margin-top: 1rem;
       background-color: $themeColor;
       color: $darkColor;
+      border: none;
+    }
+
+    .sample-button:active {
+        border: 1px solid $darkColor
     }
 
     #clear-btn {
@@ -113,7 +118,7 @@ main {
   .delete-btn {
     border-radius: 15px;
     background-color: $orangeColor;
-    color: $whiteColor;
+    color: $darkColor;
     outline: none;
     border: none;
   }
@@ -151,4 +156,72 @@ main {
     color: $darkColor;
     border: none;
   }
+
+  .view-goals:active {
+    border: 1px solid $darkColor;
+  }
 }
+
+.modal-container {
+    max-width: 500px;
+    width: 350px;
+    height: 500px;
+    background-color: $whiteColor;
+    color: $orangeColor;
+    position: fixed;
+    top: 50%;
+    left: -100%;
+    transform: translate(-50%,-50%);
+    border-radius: 16px;
+    z-index: 10;
+  
+
+    .modal-header {
+      width: 90%;
+      margin: auto;
+    }
+
+    ol {
+        li {
+            list-style-type: square;
+        }
+    }
+
+    .modal-cross-btn {
+        background-color: inherit;
+        padding:2px 7px;
+        border: 1px solid $orangeColor;
+        border-radius: 12px ;
+        outline-color: $blueColor;
+        color: $orangeColor;
+    }
+
+    .modal-cross-btn:active {
+        border: 1px solid $themeColor;
+        border-radius: 12px ;
+        transition: all 0.5s ease;
+    }
+    
+    .modal-cross-btn:active i {
+      color: $themeColor;
+    }
+}
+
+.showDisplay {
+  transform: translate(-50%,-50%);
+  left: 50%;
+  display: block;
+  transition: all 0.4s ease;
+}
+
+#overlay.active {
+    background-color: rgba(0, 0, 0, 0.5);
+    width: 100%;
+    height: 100vh;
+    z-index: 1;
+    position: fixed;
+    top: 0;
+    left: 0;
+}
+
+
