@@ -40,7 +40,6 @@ main form label {
 
 main form span {
   font-size: 1.3rem;
-  color: #342e31;
   font-weight: 500;
   color: #a4d0a4;
 }
@@ -72,7 +71,6 @@ main form input {
 main form input:focus {
   outline-style: double;
   outline-color: #4964f0;
-  border-color: none;
 }
 
 main form button,

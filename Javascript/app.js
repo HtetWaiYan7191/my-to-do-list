@@ -17,9 +17,6 @@ function storeLocalStorage(tasksValue) {
     tasks: taskArr,
   };
   localStorage.setItem('dailyTask', JSON.stringify(storeData));
-// storeData.tasks.forEach((task) => {
-//   console.log(task)
-// })
 }
 let getData = JSON.parse(localStorage.getItem('dailyTask'));
 
@@ -55,6 +52,8 @@ addBtn.addEventListener('click', () => {
   function removeTask() {
     const parent = this.parentNode;
     parent.parentNode.remove();
+    // test start
+    // const text = parent.parentNode.firstElementChild.textContent;
   }
 
   deleteBtn.forEach((btn) => {
@@ -65,8 +64,6 @@ addBtn.addEventListener('click', () => {
   tasks.value = '';
 });
 
-
-
 clearBtn.addEventListener('click', () => {
   taskContainer.innerHTML = '';
   localStorage.clear();
@@ -74,6 +71,17 @@ clearBtn.addEventListener('click', () => {
   taskArr.length = 0;
 });
 
+function showModal() {
+  if (getData) {
+    getData.tasks.forEach((task) => {
+      const node = document.createElement('li');
+      node.textContent = `${task}`;
+      dailyTaskContainer.appendChild(node);
+    });
+  } else {
+    dailyTaskContainer.innerHTML = '<li>There are no tasks for today yet</li>';
+  }
+}
 
 viewBtn.addEventListener('click', () => {
   modalContainer.classList.toggle('showDisplay');
@@ -82,28 +90,8 @@ viewBtn.addEventListener('click', () => {
   showModal();
 });
 
-function showModal() {
-
-  if(getData) {
-    getData.tasks.forEach((task) => {
-      const node = document.createElement('li');
-      node.textContent = `${task}`;
-      const li = `
-                     <li>${task}</li>
-                `;
-  
-      dailyTaskContainer.appendChild(node)
-    })
-  }
-  else {
-
-   dailyTaskContainer.innerHTML = `<li>There is no tasks for today yet</li>`;
-    return ;
-  }
-}
-
-modalCrossBtn.addEventListener('click', () => {  
- modalContainer.classList.toggle('showDisplay');
- overlay.classList.toggle('active');
- dailyTaskContainer.innerHTML = ``;
+modalCrossBtn.addEventListener('click', () => {
+  modalContainer.classList.toggle('showDisplay');
+  overlay.classList.toggle('active');
+  dailyTaskContainer.innerHTML = '';
 });
